@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Llamando from "./Componentes/Llamando";
+import Botones from "./Componentes/Botones/Botones";
 
 const maxDigitos = 9;
 
@@ -42,18 +43,7 @@ function App() {
     <div className="contenedor">
       <Llamando llamando={llamando}/>
       <main className="telefono">
-        <div className="botones">
-          <ol className="teclado">
-            {
-              [...[...Array(10)].map((x, i) => i).slice(1), 0].map(digito => (
-                <li key={digito}>
-                  <button disabled={llamando} onClick={() => anyadirDigito(digito)}>{digito}</button>
-                </li>
-              ))
-            }
-            <li><button disabled={llamando} className="big" onClick={borrarUltimoDigito}>borrar</button></li>
-          </ol>
-        </div>
+        <Botones llamando={llamando} anyadirDigito={anyadirDigito} borrarUltimoDigito={borrarUltimoDigito} />
         <div className="acciones">
           <span className="numero">{numero}</span>
           {
